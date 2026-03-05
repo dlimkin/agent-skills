@@ -78,6 +78,70 @@ ion-icon {
 }
 ```
 
+### Icon Slots
+`ion-icon` uses the `slot` attribute to position itself **inside** a parent component.
+
+| Slot | Parent | Effect |
+|------|--------|--------|
+| `slot="start"` | `ion-button`, `ion-item`, `ion-input`, `ion-select` | Icon on the left side |
+| `slot="end"` | `ion-button`, `ion-item`, `ion-input`, `ion-select` | Icon on the right side |
+| `slot="icon-only"` | `ion-button` | Icon fills the button — no text, larger tap target, adjusted sizing |
+
+#### slot="start" and slot="end"
+```html
+<!-- ion-button -->
+<ion-button>
+  <ion-icon slot="start" name="log-in-outline" aria-hidden="true"></ion-icon>
+  Login
+</ion-button>
+
+<ion-button>
+  Next
+  <ion-icon slot="end" name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+</ion-button>
+
+<!-- ion-input -->
+<ion-input label="Search" placeholder="Type to search...">
+  <ion-icon slot="start" name="search-outline" aria-hidden="true"></ion-icon>
+</ion-input>
+
+<!-- ion-select -->
+<ion-select label="Country">
+  <ion-icon slot="start" name="globe-outline" aria-hidden="true"></ion-icon>
+  <ion-select-option value="us">United States</ion-select-option>
+  <ion-select-option value="uk">United Kingdom</ion-select-option>
+</ion-select>
+```
+
+#### slot="icon-only"
+Use when the button contains only an icon and no text. Ionic automatically applies correct sizing and padding.
+```html
+<!-- Correct: icon-only button in toolbar -->
+<ion-buttons slot="end">
+  <ion-button aria-label="Search">
+    <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+  </ion-button>
+  <ion-button aria-label="More options">
+    <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+  </ion-button>
+</ion-buttons>
+```
+
+❌ Don't use `slot="icon-only"` without text when there's text next to the icon — use `slot="start"` or `slot="end"` instead.
+```html
+<!-- Wrong -->
+<ion-button>
+  <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+  Add Item
+</ion-button>
+
+<!-- Correct -->
+<ion-button>
+  <ion-icon slot="start" name="add-outline" aria-hidden="true"></ion-icon>
+  Add Item
+</ion-button>
+```
+
 ### Accessibility
 Decorative icons — hide from assistive technology:
 ```html
@@ -103,6 +167,113 @@ Icon inside a button — label the button, hide the icon:
   <ion-label>Profile</ion-label>
 </ion-item>
 ```
+
+---
+
+## Slots
+Slots are used to position content inside Ionic components. Always use the correct slot for the component context.
+
+### Universal Slots (most components)
+| Slot | Position |
+|------|----------|
+| `start` | Left side in LTR, right side in RTL |
+| `end` | Right side in LTR, left side in RTL |
+
+### ion-button Slots
+| Slot | Usage |
+|------|-------|
+| *(default)* | Button label text |
+| `start` | Icon or content before text |
+| `end` | Icon or content after text |
+| `icon-only` | Icon with no text — adjusts sizing automatically |
+
+```html
+<!-- Icon before text -->
+<ion-button>
+  <ion-icon slot="start" name="arrow-back-outline" aria-hidden="true"></ion-icon>
+  Back
+</ion-button>
+
+<!-- Icon after text -->
+<ion-button>
+  Continue
+  <ion-icon slot="end" name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+</ion-button>
+
+<!-- Icon only — no text -->
+<ion-button aria-label="Search">
+  <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+</ion-button>
+```
+
+### ion-item Slots
+| Slot | Usage |
+|------|-------|
+| *(default)* | Main content (label, input, etc.) |
+| `start` | Decorative visuals — icon, avatar, thumbnail |
+| `end` | Actions or metadata — toggle, badge, timestamp |
+
+```html
+<!-- Icon on the left, toggle on the right -->
+<ion-item>
+  <ion-icon name="notifications-outline" slot="start" aria-hidden="true"></ion-icon>
+  <ion-label>Notifications</ion-label>
+  <ion-toggle slot="end"></ion-toggle>
+</ion-item>
+
+<!-- Avatar on the left, badge on the right -->
+<ion-item>
+  <ion-avatar slot="start">
+    <img src="avatar.jpg" alt="User" />
+  </ion-avatar>
+  <ion-label>John Doe</ion-label>
+  <ion-badge slot="end" color="primary">3</ion-badge>
+</ion-item>
+```
+
+### ion-toolbar Slots
+| Slot | Position | iOS | MD |
+|------|----------|-----|----|
+| `start` | Left | Left | Left |
+| `end` | Right | Right | Right |
+| `primary` | Action side | Right | Right |
+| `secondary` | Secondary side | Left | Right (after primary) |
+| `content` | Center | Center | Center |
+
+```html
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+
+  <ion-title>Page Title</ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button aria-label="Search">
+      <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+```
+
+### ion-fab-button Slots
+| Slot | Usage |
+|------|-------|
+| *(default)* | Icon inside the FAB button |
+
+```html
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+```
+
+### Common Mistakes
+❌ Using `slot="icon-only"` outside of a button
+❌ Using `slot="start"` on text content in `ion-item` (use default slot)
+❌ Placing `ion-buttons` directly in `ion-toolbar` without a slot
+❌ Using `slot="fixed"` anywhere other than `ion-content`
 
 ---
 
