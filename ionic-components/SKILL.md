@@ -22,8 +22,8 @@ When building any UI element, always prefer Ionic components over custom HTML/CS
 <ion-icon name="heart-outline" size="large"></ion-icon>
 ```
 
-### Boolean properties — ВСЕГДА в квадратных скобках
-Boolean без скобок всегда воспринимается как `true`, даже если написано `"false"`.
+### Boolean properties — ALWAYS use square brackets
+Boolean without brackets is always treated as `true`, even if the value is `"false"`.
 
 ```html
 <!-- ✅ Correct -->
@@ -33,7 +33,7 @@ Boolean без скобок всегда воспринимается как `tr
 <ion-toggle [checked]="isEnabled" [disabled]="false"></ion-toggle>
 <ion-list [inset]="true"></ion-list>
 
-<!-- ❌ Wrong — строка "false" всё равно будет true -->
+<!-- ❌ Wrong — string "false" is still treated as true -->
 <ion-button disabled="false">Submit</ion-button>
 <ion-input readonly="false"></ion-input>
 ```
@@ -55,13 +55,13 @@ Boolean без скобок всегда воспринимается как `tr
 </ion-refresher>
 ```
 
-### Правило
-| Тип | Синтаксис | Пример |
-|-----|-----------|--------|
-| String (статика) | `attr="value"` | `color="primary"` |
+### Rule
+| Type | Syntax | Example |
+|------|--------|---------|
+| String (static) | `attr="value"` | `color="primary"` |
 | Boolean | `[attr]="value"` | `[disabled]="true"` |
 | Number | `[attr]="value"` | `[min]="0"` |
-| Dynamic / переменная | `[attr]="variable"` | `[color]="myColor"` |
+| Dynamic / variable | `[attr]="variable"` | `[color]="myColor"` |
 | Event | `(event)="handler()"` | `(ionChange)="fn()"` |
 
 ---
