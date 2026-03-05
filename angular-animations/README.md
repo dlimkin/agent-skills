@@ -5,7 +5,7 @@ A skill for AI coding agents that teaches modern Angular animation patterns usin
 ## Installation
 
 ```bash
-npx skills add dlimkin/skills --skill angular-animations
+npx skills add dlimkin/agent-skills --skill angular-animations
 ```
 
 ## What this skill does
