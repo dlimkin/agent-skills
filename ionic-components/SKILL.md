@@ -13,6 +13,59 @@ When building any UI element, always prefer Ionic components over custom HTML/CS
 2. **Use Ionic component** if available — with proper `ion-` tags and Ionic properties
 3. **Custom HTML/CSS only** if Ionic has no equivalent component or lacks required functionality
 
+## Component Properties (Angular)
+
+### String properties — без скобок
+```html
+<ion-button expand="block" fill="outline" color="primary">Submit</ion-button>
+<ion-input type="email" label="Email" placeholder="Enter email"></ion-input>
+<ion-icon name="heart-outline" size="large"></ion-icon>
+```
+
+### Boolean properties — ВСЕГДА в квадратных скобках
+Boolean без скобок всегда воспринимается как `true`, даже если написано `"false"`.
+
+```html
+<!-- ✅ Correct -->
+<ion-button [disabled]="isLoading">Submit</ion-button>
+<ion-input [readonly]="isReadonly" [clearInput]="true"></ion-input>
+<ion-checkbox [checked]="isChecked" [indeterminate]="false"></ion-checkbox>
+<ion-toggle [checked]="isEnabled" [disabled]="false"></ion-toggle>
+<ion-list [inset]="true"></ion-list>
+
+<!-- ❌ Wrong — строка "false" всё равно будет true -->
+<ion-button disabled="false">Submit</ion-button>
+<ion-input readonly="false"></ion-input>
+```
+
+### Dynamic values — всегда в квадратных скобках
+```html
+<ion-badge [color]="badgeColor">{{ count }}</ion-badge>
+<ion-icon [name]="iconName"></ion-icon>
+<ion-button [expand]="isFullWidth ? 'block' : undefined">Click</ion-button>
+```
+
+### Events — в круглых скобках
+```html
+<ion-button (click)="onSubmit()">Submit</ion-button>
+<ion-input (ionChange)="onChange($event)" (ionBlur)="onBlur()"></ion-input>
+<ion-toggle (ionChange)="onToggle($event)"></ion-toggle>
+<ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+```
+
+### Правило
+| Тип | Синтаксис | Пример |
+|-----|-----------|--------|
+| String (статика) | `attr="value"` | `color="primary"` |
+| Boolean | `[attr]="value"` | `[disabled]="true"` |
+| Number | `[attr]="value"` | `[min]="0"` |
+| Dynamic / переменная | `[attr]="variable"` | `[color]="myColor"` |
+| Event | `(event)="handler()"` | `(ionChange)="fn()"` |
+
+---
+
 ## Looking Up Components
 When unsure if an Ionic component exists or how to use it:
 1. **Context7 first** (if available) — resolve `ionic` and fetch relevant docs
