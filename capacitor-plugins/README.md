@@ -5,7 +5,7 @@ A skill for AI coding agents that teaches how to create, structure, and publish 
 ## Installation
 
 ```bash
-npx skills add your-username/skills --skill capacitor-plugins
+npx skills add dlimkin/agent-skills --skill capacitor-plugins
 ```
 
 ## What this skill does
