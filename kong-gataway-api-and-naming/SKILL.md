@@ -1,3 +1,9 @@
+---
+name: kong-gateway-api-and-naming
+description: >
+    Навыки по именованию объектов Kong и работе с Kong Admin API. Правила именования, примеры конфигурации, обзор встроенных плагинов и CRUD-операций через API.
+---
+
 # Kong Gateway — Skill: Именование и Admin API
 
 ## Контекст применения
