@@ -1,0 +1,25 @@
+---
+name: {{SKILL_NAME}}
+description: Use for every task in {{PROJECT_TITLE}}—planning, implementation, debugging, review, or handoff—to load relevant project knowledge first and preserve verified reusable findings and plan status afterward.
+---
+
+<!-- project-knowledge-adapter -->
+
+# {{PROJECT_TITLE}} Project Knowledge
+
+- Repository: `{{PROJECT_NAME}}`
+- Knowledge root: `references/`
+- Index: [references/index.md](references/index.md)
+- Knowledge language: `{{LANGUAGE}}`
+
+Use `$project-knowledge` when it is available. This adapter remains usable without it:
+
+1. Read only `references/index.md` initially.
+2. Open entries whose summary, tags, status, or related paths match the task.
+3. Verify potentially stale claims against current code, configuration, tests, or authoritative documentation.
+4. During an authorized implementation task, update or add only verified reusable knowledge and keep plan status accurate.
+5. Do not write during read-only analysis or Plan Mode unless the user explicitly asks to save knowledge.
+6. Never store secrets, personal data, generated environment values, private chain-of-thought, or raw transcripts.
+7. Validate the knowledge base before reporting a knowledge update complete.
+
+Use `$handoff-pro` for active continuation state when available. Otherwise capture `Current State`, `Completed`, `Decisions and Evidence`, `Failed Approaches`, `Verification`, and `Next Actions` in a `handoff` document.

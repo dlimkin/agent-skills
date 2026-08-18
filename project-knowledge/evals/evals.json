@@ -1,0 +1,23 @@
+{
+  "skill_name": "project-knowledge",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In a repository with a project-knowledge adapter, explain how offline routing works. The root index also links to Android release notes, notification debugging, and an active payments plan. Use the stored knowledge efficiently and do not change files.",
+      "expected_output": "Reads the root index and only the routing-related entry, verifies relevant claims against current code when needed, and leaves the knowledge base unchanged.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Fix a repeated background-location restart bug. During verification you confirm that registering the same native listener twice creates duplicate updates, while an earlier timeout-based theory is false. Preserve only the reusable project knowledge before finishing.",
+      "expected_output": "Updates or creates one indexed pitfall with verified symptoms, root cause, failed timeout hypothesis, resolution, paths, and verification evidence; it avoids a raw task log and duplicate entries.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Continue an existing indexed migration plan. Mark it in progress, implement the remaining steps, but a required device check is unavailable. Prepare continuation context without assuming handoff-pro is installed.",
+      "expected_output": "Updates the existing plan rather than creating a duplicate, leaves it implemented rather than verified, and creates a concise fallback handoff with the concrete missing device check and next actions.",
+      "files": []
+    }
+  ]
+}
